@@ -25,8 +25,8 @@ in your manifest:
 
     include fetchfact
     
-    $url = http://service.example.com/something?foo=bar
-    $factfile = something.json
+    $url = 'http://service.example.com/something?foo=bar'
+    $factfile = 'something.json'
     
     fetchfact::fetch { '$filename':
       url => $url,
