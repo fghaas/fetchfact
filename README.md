@@ -36,6 +36,10 @@ in your manifest:
 Note that `fetchfact` will ensure that the required JSON
 Ruby module is installed if your `filename` ends in `.json`.
 
+Normally, the lookup will occur only once for every node.
+In order to purge and refresh the downloaded facts, delete
+the fact file and wait for the next agent run.
+
 License
 -------
 
