@@ -1,21 +1,21 @@
 define fetchfact::fetch ( $url, $factfile ) {
 
   include fetchfact
-  $path = "/etc/facter/facts.d/$factfile"
+  $path = "/etc/facter/facts.d/${factfile}"
 
   case $factfile {
     /.*\.json$/: {
       case $osfamily {
         'redhat','debian','suse': {
-           package { "ruby-json":
-             ensure => installed
-           }
+          package { 'ruby-json':
+            ensure => installed
+          }
         }
         default: {
-           package { "json":
-             ensure => installed,
-             provider => gem
-           }
+          package { 'json':
+            ensure   => installed,
+            provider => gem
+          }
         }
       }
     }
@@ -25,11 +25,10 @@ define fetchfact::fetch ( $url, $factfile ) {
     }
   }
 
-
-  wget::fetch { "$url":
-    source => $url,
+  wget::fetch { $url:
+    source      => $url,
     destination => $path,
-    require => File['/etc/facter/facts.d']
+    require     => File['/etc/facter/facts.d']
   }
 
-}  
+}
